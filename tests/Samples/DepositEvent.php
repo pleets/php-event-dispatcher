@@ -6,8 +6,6 @@ use Pleets\EventDispatcher\Event;
 
 class DepositEvent extends Event
 {
-    private const NAME = 'deposit';
-
     public string $text;
 
     protected string $amount;
