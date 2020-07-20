@@ -9,6 +9,6 @@ class LogDepositNotification extends Listener
 {
     public function handle(Event $event): void
     {
-        // code to log this event
+        $event->text = 'Event changed again!';
     }
 }
