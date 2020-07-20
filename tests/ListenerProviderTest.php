@@ -3,6 +3,7 @@
 namespace Test;
 
 use PHPUnit\Framework\TestCase;
+use Pleets\EventDispatcher\Exceptions\ListenerNotFoundException;
 use Pleets\EventDispatcher\ListenerProvider;
 use Tests\Samples\DepositEvent;
 use Tests\Samples\LogDepositNotification;
@@ -49,6 +50,17 @@ class ListenerProviderTest extends TestCase
         $provider->subscribe($deposit, SendDepositNotification::class);
 
         $this->assertSame([SendDepositNotification::class], $provider->getListenersForEvent($deposit));
+    }
+
+    /** @test */
+    public function itThrowsAnExceptionWhenListenerClassNameDoesNotExists()
+    {
+        $this->expectException(ListenerNotFoundException::class);
+
+        $provider = new ListenerProvider();
+        $deposit = new DepositEvent('127.00');
+
+        $provider->subscribe($deposit, 'some_not_existing_class');
     }
 
     /** @test */

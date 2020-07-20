@@ -2,6 +2,7 @@
 
 namespace Pleets\EventDispatcher;
 
+use Pleets\EventDispatcher\Exceptions\ListenerNotFoundException;
 use Psr\EventDispatcher\ListenerProviderInterface;
 
 /**
@@ -62,7 +63,11 @@ class ListenerProvider implements ListenerProviderInterface
             $this->eventListeners[$key] = [];
         }
 
-        $this->eventListeners[$key][] = $listener;  // TODO: what happens if the class does not exists ?
+        if (!class_exists($listener)) {
+            throw new ListenerNotFoundException('The specified listener does not exists: ' . $listener);
+        }
+
+        $this->eventListeners[$key][] = $listener;
     }
 
     public function unsubscribeByListenerClassName(Event $event, string $listener): void
