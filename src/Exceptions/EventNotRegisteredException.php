@@ -2,6 +2,6 @@
 
 namespace Pleets\EventDispatcher\Exceptions;
 
-class ListenerNotFoundException extends \Exception
+class EventNotRegisteredException extends \Exception
 {
 }

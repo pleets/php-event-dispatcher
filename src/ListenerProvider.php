@@ -2,7 +2,9 @@
 
 namespace Pleets\EventDispatcher;
 
+use Pleets\EventDispatcher\Exceptions\EventNotRegisteredException;
 use Pleets\EventDispatcher\Exceptions\ListenerNotFoundException;
+use Pleets\EventDispatcher\Exceptions\ListenerNotRegisteredException;
 use Psr\EventDispatcher\ListenerProviderInterface;
 
 /**
@@ -64,26 +66,57 @@ class ListenerProvider implements ListenerProviderInterface
         }
 
         if (!class_exists($listener)) {
-            throw new ListenerNotFoundException('The specified listener does not exists: ' . $listener);
+            throw new ListenerNotFoundException('The specified listener does not exists: '.$listener);
         }
 
         $this->eventListeners[$key][] = $listener;
     }
 
-    public function unsubscribeByListenerClassName(Event $event, string $listener): void
+    public function unsubscribeByListenerInstance(Event $event, Listener $listener): void
     {
         $key = $this->getEventKey($event);
-        $listeners = $this->eventListeners[$key];   // TODO: what happens if the key does not exists ?
-        $eventListenerKey = array_search($listener, $listeners);  // TODO: what happens if the key does not exists
+
+        if (!array_key_exists($key, $this->eventListeners)) {
+            throw new EventNotRegisteredException(
+                'The listener '.get_class($event).' is not subscribed to '.get_class($event)
+            );
+        }
+
+        $listeners = $this->eventListeners[$key];
+        $eventListenerKey = array_search($this->getListenerKey($listener), $listeners);
+
+        if (false === $eventListenerKey) {
+            throw new ListenerNotRegisteredException(
+                'The listener '.get_class($event).' is not subscribed to '.get_class($event)
+            );
+        }
 
         unset($this->eventListeners[$key][$eventListenerKey]);
     }
 
-    public function unsubscribeByListenerInstance(Event $event, Listener $listener): void
+    public function unsubscribeByListenerClassName(Event $event, string $listener): void
     {
         $key = $this->getEventKey($event);
-        $listeners = $this->eventListeners[$key];   // TODO: what happens if the key does not exists ?
-        $eventListenerKey = array_search($this->getListenerKey($listener), $listeners); // TODO: what happens if the key does not exists
+
+        if (!array_key_exists($key, $this->eventListeners)) {
+            throw new EventNotRegisteredException(
+                'The event '.get_class($event).' is not registered'
+            );
+        }
+
+        $listeners = $this->eventListeners[$key];
+
+        if (!class_exists($listener)) {
+            throw new ListenerNotFoundException('The specified listener does not exists: '.$listener);
+        }
+
+        $eventListenerKey = array_search($listener, $listeners);  // TODO: what happens if the key does not exists
+
+        if (false === $eventListenerKey) {
+            throw new ListenerNotRegisteredException(
+                'The listener '.get_class($event).' is not subscribed to '.get_class($event)
+            );
+        }
 
         unset($this->eventListeners[$key][$eventListenerKey]);
     }
