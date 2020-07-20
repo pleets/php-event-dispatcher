@@ -6,7 +6,7 @@ use Pleets\EventDispatcher\Concerns\HasNotAccessibleValues;
 use ReflectionClass;
 use ReflectionProperty;
 
-class Event
+abstract class Event
 {
     use HasNotAccessibleValues;
 
