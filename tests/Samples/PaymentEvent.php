@@ -4,10 +4,8 @@ namespace Tests\Samples;
 
 use Pleets\EventDispatcher\Event;
 
-class DepositEvent extends Event
+class PaymentEvent extends Event
 {
-    private const NAME = 'deposit';
-
     public string $text;
 
     protected string $amount;
@@ -17,6 +15,6 @@ class DepositEvent extends Event
     public function __construct($amount)
     {
         $this->amount = $amount;
-        $this->text = 'Your deposite: '.$this->amount.$this->currency;
+        $this->text = 'Your payment: '.$this->amount.$this->currency;
     }
 }
