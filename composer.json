@@ -1,0 +1,53 @@
+{
+  "name": "pleets/php-event-dispatcher",
+  "description": "PSR-14 Event Dispatcher",
+  "license": "MIT",
+  "keywords": [
+    "PHP",
+    "Event Dispatcher",
+    "PSR-14"
+  ],
+  "homepage": "https://pleets.org",
+  "support": {
+    "issues": "https://github.com/pleets/php-event-dispatcher/issues",
+    "source": "https://github.com/pleets/php-event-dispatcher"
+  },
+  "authors": [
+    {
+      "name": "Darío Rivera",
+      "email": "fermius.us@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "7.4.*",
+    "psr/event-dispatcher": "^1.0",
+    "friendsofphp/php-cs-fixer": "^2.16"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0"
+  },
+  "scripts": {
+    "phpunit": "phpunit --stop-on-error --stop-on-failure --testdox",
+    "phpcs-desc":  "php-cs-fixer describe",
+    "phpcs-check":  "php-cs-fixer --dry-run --verbose --show-progress=dots fix",
+    "phpcs-fix":  "php-cs-fixer fix --verbose --diff --show-progress=dots",
+    "phpcs-auto-check": "@phpcs-check --rules=@PSR1,@PSR2,@PhpCsFixer",
+    "phpcs-auto-fix": "@phpcs-fix --rules=@PSR1,@PSR2,@PhpCsFixer",
+    "phpcs-auto-check-project": "php-cs-fixer --dry-run --verbose --show-progress=dots fix --config=.php_cs.dist",
+    "phpcs-auto-fix-project": "php-cs-fixer --verbose --diff --show-progress=dots fix --config=.php_cs.dist",
+    "test": [
+      "@phpcs-auto-check-project",
+      "@phpunit"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "Pleets\\EventDispatcher\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}
