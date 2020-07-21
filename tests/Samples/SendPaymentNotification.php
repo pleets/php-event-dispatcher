@@ -9,6 +9,6 @@ class SendPaymentNotification extends Listener
 {
     public function handle(Event $event): void
     {
-        echo $event->text = 'Event changed!';
+        $event->text = 'Event changed!';
     }
 }

@@ -19,7 +19,7 @@ use Tests\Samples\SendPaymentNotification;
 class ListenerProviderTest extends TestCase
 {
     /** @test */
-    public function itStoreTheFullyQualifiedNameAsTheListenerReference()
+    public function itStoresTheFullyQualifiedNameAsTheListenerReference()
     {
         $provider = new ListenerProvider();
         $deposit = new DepositEvent('127.00');
