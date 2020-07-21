@@ -48,4 +48,12 @@ class EventTest extends TestCase
         $this->assertTrue($textProperty->isPublic());
         $this->assertEquals('Your deposite: 127.00USD', $textProperty->getValue($obj));
     }
+
+    /** @test */
+    public function itSupportsLosslessSerialization()
+    {
+        $event = new DepositEvent('127.00');
+
+        $this->assertTrue($event == unserialize(serialize($event)));
+    }
 }
