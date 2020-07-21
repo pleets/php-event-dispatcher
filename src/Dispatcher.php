@@ -18,7 +18,6 @@ class Dispatcher implements EventDispatcherInterface
         $listeners = $this->provider->getListenersForEvent($event);
 
         foreach ($listeners as $listener) {
-            // @var $listener Listener
             (new $listener())->handle($event);
         }
     }
