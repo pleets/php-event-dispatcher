@@ -10,6 +10,7 @@ use Tests\Samples\LogDepositNotification;
 use Tests\Samples\SendDepositNotification;
 use Tests\Samples\SetTextListener;
 use Tests\Samples\StoppableEvent;
+use Tests\Samples\TrimTextListener;
 use Tests\Samples\UnsetTextListener;
 
 /**
@@ -77,5 +78,21 @@ class DispatcherTest extends TestCase
 
         $this->assertInstanceOf(StoppableEvent::class, $event);
         $this->assertSame('', $stoppable->text);
+    }
+
+    /** @test */
+    public function itCanRunAllListenersInAStoppableEventsWhenItIsNotStopped()
+    {
+        $provider = new ListenerProvider();
+        $stoppable = new StoppableEvent();
+
+        $provider->subscribe($stoppable, new SetTextListener());
+        $provider->subscribe($stoppable, new TrimTextListener());
+
+        $dispatcher = new Dispatcher($provider);
+        $event = $dispatcher->dispatch($stoppable);
+
+        $this->assertInstanceOf(StoppableEvent::class, $event);
+        $this->assertSame('Hello World', $stoppable->text);
     }
 }

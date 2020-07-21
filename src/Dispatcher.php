@@ -25,7 +25,7 @@ class Dispatcher implements EventDispatcherInterface
         foreach ($listeners as $listener) {
             (new $listener())->handle($event);
 
-            if ($event instanceof StoppableEventInterface) {
+            if ($event instanceof StoppableEventInterface && $event->isPropagationStopped()) {
                 break;
             }
         }
