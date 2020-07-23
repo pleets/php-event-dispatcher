@@ -1,4 +1,4 @@
-# PRR-14 Event Dispatcher
+# PSR-14 Event Dispatcher
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pleets_php-event-dispatcher&metric=alert_status)](https://sonarcloud.io/dashboard?id=pleets_php-event-dispatcher)
 
