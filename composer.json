@@ -28,6 +28,7 @@
   },
   "scripts": {
     "phpunit": "phpunit --stop-on-error --stop-on-failure --testdox",
+    "phpunit-xml": "phpunit --stop-on-error --stop-on-failure --coverage-clover phpunit.coverage.xml",
     "phpcs-desc":  "php-cs-fixer describe",
     "phpcs-check":  "php-cs-fixer --dry-run --verbose --show-progress=dots fix",
     "phpcs-fix":  "php-cs-fixer fix --verbose --diff --show-progress=dots",
@@ -38,6 +39,10 @@
     "test": [
       "@phpcs-auto-check-project",
       "@phpunit"
+    ],
+    "code-analysis": [
+      "@phpunit-xml",
+      "sonar-scanner"
     ]
   },
   "autoload": {
