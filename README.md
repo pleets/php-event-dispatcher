@@ -24,9 +24,7 @@ use Pleets\EventDispatcher\Event;
 class DepositEvent extends Event
 {
     public string $text;
-
     protected string $amount;
-
     private string $currency = 'USD';
 
     public function __construct($amount)
@@ -80,4 +78,4 @@ $dispatcher = new Dispatcher($provider);
 $dispatcher->dispatch($deposit);
 ```
 
-All listener will be informed about this event and will be executed.
+All listeners will be informed about this event and will be executed.
