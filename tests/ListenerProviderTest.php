@@ -12,10 +12,6 @@ use Tests\Samples\LogDepositNotification;
 use Tests\Samples\SendDepositNotification;
 use Tests\Samples\SendPaymentNotification;
 
-/**
- * @internal
- * @coversNothing
- */
 class ListenerProviderTest extends TestCase
 {
     /** @test */

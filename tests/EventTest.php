@@ -7,10 +7,6 @@ use Pleets\EventDispatcher\Concerns\HasNotAccessibleValues;
 use ReflectionClass;
 use Tests\Samples\DepositEvent;
 
-/**
- * @internal
- * @coversNothing
- */
 class EventTest extends TestCase
 {
     use HasNotAccessibleValues;

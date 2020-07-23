@@ -13,10 +13,6 @@ use Tests\Samples\StoppableEvent;
 use Tests\Samples\TrimTextListener;
 use Tests\Samples\UnsetTextListener;
 
-/**
- * @internal
- * @coversNothing
- */
 class DispatcherTest extends TestCase
 {
     /** @test */
