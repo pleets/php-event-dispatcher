@@ -6,10 +6,6 @@ use PHPUnit\Framework\TestCase;
 use Tests\Samples\DepositEvent;
 use Tests\Samples\SendDepositNotification;
 
-/**
- * @internal
- * @coversNothing
- */
 class ListenerTest extends TestCase
 {
     /** @test */

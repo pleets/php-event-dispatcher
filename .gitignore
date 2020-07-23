@@ -1,5 +1,9 @@
 composer.lock
+phpunit.coverage.xml
+sonar-project.properties
 .phpunit.result.cache
 .php_cs.cache
 .idea/
+.scannerwork/
 vendor/
+test/coverage

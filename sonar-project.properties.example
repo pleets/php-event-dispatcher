@@ -1,0 +1,25 @@
+# must be unique in a given SonarQube instance
+sonar.projectKey=
+#sonar.organization=
+
+# --- optional properties ---
+
+# defaults to project key
+#sonar.projectName=
+# defaults to 'not provided'
+#sonar.projectVersion=1.0
+
+# Path is relative to the sonar-project.properties file. Defaults to .
+sonar.sources=./src
+
+# Encoding of the source code. Default is default system encoding
+sonar.sourceEncoding=UTF-8
+
+# SonarQube host
+sonar.host.url=
+
+# Clover XML-format coverage report files
+sonar.php.coverage.reportPaths=phpunit.coverage.xml
+
+# SonarQubeube token
+sonar.login=
