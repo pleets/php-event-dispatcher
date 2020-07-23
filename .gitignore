@@ -6,4 +6,4 @@ sonar-project.properties
 .idea/
 .scannerwork/
 vendor/
-test/coverage
+tests/coverage/
