@@ -1,5 +1,7 @@
 # PRR-14 Event Dispatcher
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pleets_php-event-dispatcher&metric=alert_status)](https://sonarcloud.io/dashboard?id=pleets_php-event-dispatcher)
+
 Event Dispatching is a common and well-tested mechanism to allow developers to inject logic into an application easily and consistently.
 This library was developed according to PSR-14 and all interfaces in psr/event-dispatcher were implemented.
 
