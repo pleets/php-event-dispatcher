@@ -22,6 +22,6 @@
     </filter>
 
     <logging>
-        <log type="coverage-html" target="tests/coverage"></log>
+        <log type="coverage-html" target="tests/coverage" />
     </logging>
 </phpunit>
